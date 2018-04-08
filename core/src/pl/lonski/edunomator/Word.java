@@ -16,13 +16,14 @@ public class Word extends Actor {
 	private final Texture texture;
 	private final BitmapFont font;
 	private final String name;
+	private boolean drawLabel;
 
 	private Word(Texture texture, String name) {
 		this.texture = texture;
 		this.name = name.substring(0, 1).toUpperCase() + name.substring(1);
 		this.font = new BitmapFont(Gdx.files.internal("font/noto.fnt"));
 		this.font.setColor(Color.RED);
-		this.font.getData().setScale(2);
+		this.drawLabel = true;
 
 		setPosition(Gdx.graphics.getWidth(), 0);
 	}
@@ -41,18 +42,23 @@ public class Word extends Actor {
 		return name;
 	}
 
+	void setLabelVisible(boolean visible) {
+		drawLabel = visible;
+	}
+
 	@Override
 	public void draw(Batch batch, float alpha) {
-		batch.draw(texture, getX(), getY(), Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		batch.draw(texture, getX(), getY(), Gdx.graphics.getWidth() * getScaleX(),
+				Gdx.graphics.getHeight() * getScaleY());
 
-		float fx = getX() + 40;
-		float fy = getY() + 20 + font.getData().getFirstGlyph().height * font.getData().scaleY * 1.2f;
-		font.setColor(Color.BLACK);
-		font.draw(batch, name, fx + 6, fy + 6);
-		font.draw(batch, name, fx + 6, fy - 6);
-		font.draw(batch, name, fx - 6, fy + 6);
-		font.draw(batch, name, fx - 6, fy - 6);
-		font.setColor(Color.RED);
-		font.draw(batch, name, fx, fy);
+		if (drawLabel) {
+			font.getData().setScale(1.5f * getScaleX(), 1.5f * getScaleY());
+			float fx = getX() + 40;
+			float fy = getY() + 20 + font.getData().getFirstGlyph().height * font.getData().scaleY * 1.2f;
+			font.setColor(Color.BLACK);
+			font.draw(batch, name, fx + 6, fy - 6);
+			font.setColor(Color.RED);
+			font.draw(batch, name, fx, fy);
+		}
 	}
 }
