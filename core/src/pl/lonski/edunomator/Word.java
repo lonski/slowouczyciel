@@ -20,7 +20,7 @@ public class Word extends Actor {
 
 	private Word(Texture texture, String name) {
 		this.texture = texture;
-		this.name = name.substring(0, 1).toUpperCase() + name.substring(1);
+		this.name = name.substring(0, 1).toUpperCase() + name.substring(1).replaceAll("_", " ");
 		this.font = new BitmapFont(Gdx.files.internal("font/noto.fnt"));
 		this.font.setColor(Color.RED);
 		this.drawLabel = true;
