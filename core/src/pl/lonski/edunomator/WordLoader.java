@@ -32,7 +32,7 @@ public class WordLoader {
 	private void loadSingleFile(FileHandle file) {
 		String name = file.name().substring(0, file.name().indexOf('.'));
 		System.out.println("Loading " + name);
-		words.add(new Word(new Texture(file), name));
+		words.add(new Word(file, name));
 	}
 
 	boolean isDone() {

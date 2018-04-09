@@ -1,6 +1,5 @@
 package pl.lonski.edunomator;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -15,7 +14,7 @@ class Text extends Actor {
 	Text(String text, Color color) {
 		this.text = text;
 		this.color = color;
-		this.font = new BitmapFont(Gdx.files.internal("font/noto.fnt"));
+		this.font = Edunomator.getFont();
 	}
 
 	@Override

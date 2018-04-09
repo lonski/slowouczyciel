@@ -60,6 +60,13 @@ public class WordLearnStage extends EdunomatorStage implements DirectionListener
 		actions.add(touchable(Touchable.disabled));
 		actions.addAll(Arrays.asList(toWrap));
 		actions.add(touchable(Touchable.enabled));
+		actions.add(new Action() {
+			@Override
+			public boolean act(float delta) {
+				loadWordAt(currentWordIdx + 1);
+				return true;
+			}
+		});
 		return sequence(actions.toArray(new Action[]{}));
 	}
 
@@ -70,15 +77,21 @@ public class WordLearnStage extends EdunomatorStage implements DirectionListener
 			if (currentWord != null) {
 				currentWord.addAction(wrapAction(moveTo(-screenWidth, 0, 0.2f), removeActor()));
 			}
-			currentWord = words.get(currentWordIdx);
-			System.out.println(currentWord.getWordName());
+			currentWord = getWordAtCurrentIdx();
 			currentWord.setPosition(screenWidth, 0);
 			currentWord.addAction(wrapAction(moveTo(0, 0, 0.2f)));
 			addActor(currentWord);
 			speaker.speak(currentWord.getWordName());
+			System.out.println(currentWordIdx);
+			System.out.println(currentWord.getWordName());
 		} else {
 			edunomator.startExam(words);
 		}
+	}
+
+	private Word getWordAtCurrentIdx() {
+		loadWordAt(currentWordIdx);
+		return words.get(currentWordIdx);
 	}
 
 	@Override
@@ -88,11 +101,17 @@ public class WordLearnStage extends EdunomatorStage implements DirectionListener
 			if (currentWord != null) {
 				currentWord.addAction(wrapAction(moveTo(screenWidth, 0, 0.2f), removeActor()));
 			}
-			currentWord = words.get(currentWordIdx);
+			currentWord = getWordAtCurrentIdx();
 			currentWord.setPosition(-screenWidth, 0);
 			currentWord.addAction(wrapAction(moveTo(0, 0, 0.2f)));
 			addActor(currentWord);
 			speaker.speak(currentWord.getWordName());
+		}
+	}
+
+	private void loadWordAt(int idx) {
+		if (idx >= 0 && idx < words.size()) {
+			words.get(idx).load();
 		}
 	}
 
