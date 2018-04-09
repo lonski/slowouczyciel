@@ -24,6 +24,7 @@ public class ExamStage extends EdunomatorStage {
 
 	ExamStage(List<Word> words, Edunomator edunomator) {
 		this.words = words;
+		Collections.shuffle(this.words);
 		this.random = ThreadLocalRandom.current();
 		this.edunomator = edunomator;
 		this.speaker = edunomator.getSpeaker();

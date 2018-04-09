@@ -1,6 +1,7 @@
 package pl.lonski.edunomator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
@@ -35,6 +36,7 @@ public class Word extends Actor {
 			Word word = new Word(new Texture(file), name);
 			words.add(word);
 		}
+		Collections.shuffle(words);
 		return words;
 	}
 
