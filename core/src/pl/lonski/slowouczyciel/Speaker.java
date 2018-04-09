@@ -1,4 +1,4 @@
-package pl.lonski.edunomator;
+package pl.lonski.slowouczyciel;
 
 public interface Speaker {
 	void speak(String text);

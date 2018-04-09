@@ -1,4 +1,4 @@
-package pl.lonski.edunomator;
+package pl.lonski.slowouczyciel;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
@@ -13,20 +13,20 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 
-public class WordLearnStage extends EdunomatorStage implements DirectionListener {
+public class WordLearnStage extends SlowouczycielStage implements DirectionListener {
 
 	private final float screenWidth;
 	private final Speaker speaker;
-	private final Edunomator edunomator;
+	private final Slowouczyciel slowouczyciel;
 	private final WordLoader loader;
-	private List<Word> words;
+	private List<pl.lonski.slowouczyciel.Word> words;
 	private int currentWordIdx;
-	private Word currentWord;
+	private pl.lonski.slowouczyciel.Word currentWord;
 	private Text loadingLabel;
 
-	WordLearnStage(String folder, Edunomator edunomator) {
-		this.speaker = edunomator.getSpeaker();
-		this.edunomator = edunomator;
+	WordLearnStage(String folder, Slowouczyciel slowouczyciel) {
+		this.speaker = slowouczyciel.getSpeaker();
+		this.slowouczyciel = slowouczyciel;
 		this.words = new ArrayList<>();
 		this.screenWidth = Gdx.graphics.getWidth();
 		this.currentWordIdx = -1;
@@ -85,11 +85,11 @@ public class WordLearnStage extends EdunomatorStage implements DirectionListener
 			System.out.println(currentWordIdx);
 			System.out.println(currentWord.getWordName());
 		} else {
-			edunomator.startExam(words);
+			slowouczyciel.startExam(words);
 		}
 	}
 
-	private Word getWordAtCurrentIdx() {
+	private pl.lonski.slowouczyciel.Word getWordAtCurrentIdx() {
 		loadWordAt(currentWordIdx);
 		return words.get(currentWordIdx);
 	}

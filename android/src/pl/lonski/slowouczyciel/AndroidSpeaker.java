@@ -1,4 +1,4 @@
-package pl.lonski.edunomator;
+package pl.lonski.slowouczyciel;
 
 import android.speech.tts.TextToSpeech;
 

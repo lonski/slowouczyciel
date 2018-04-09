@@ -1,4 +1,4 @@
-package pl.lonski.edunomator;
+package pl.lonski.slowouczyciel;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -14,7 +14,7 @@ class Text extends Actor {
 	Text(String text, Color color) {
 		this.text = text;
 		this.color = color;
-		this.font = Edunomator.getFont();
+		this.font = Slowouczyciel.getFont();
 	}
 
 	@Override

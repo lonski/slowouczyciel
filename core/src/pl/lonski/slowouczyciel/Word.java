@@ -1,4 +1,4 @@
-package pl.lonski.edunomator;
+package pl.lonski.slowouczyciel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;

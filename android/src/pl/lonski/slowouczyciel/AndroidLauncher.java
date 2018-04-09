@@ -1,4 +1,4 @@
-package pl.lonski.edunomator;
+package pl.lonski.slowouczyciel;
 
 import java.util.Locale;
 
@@ -20,7 +20,7 @@ public class AndroidLauncher extends AndroidApplication implements TextToSpeech.
 		tts = new TextToSpeech(this, this);
 		actionResolver = new AndroidSpeaker(tts);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(new Edunomator(actionResolver), config);
+		initialize(new Slowouczyciel(actionResolver), config);
 	}
 
 	@Override

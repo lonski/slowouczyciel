@@ -1,4 +1,4 @@
-package pl.lonski.edunomator;
+package pl.lonski.slowouczyciel;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.scaleBy;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
@@ -14,20 +14,20 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
-public class ExamStage extends EdunomatorStage {
+public class ExamStage extends SlowouczycielStage {
 
 	private final List<Word> words;
 	private final Random random;
-	private final Edunomator edunomator;
+	private final Slowouczyciel slowouczyciel;
 	private final Speaker speaker;
 	private Question question;
 
-	ExamStage(List<Word> words, Edunomator edunomator) {
+	ExamStage(List<Word> words, Slowouczyciel slowouczyciel) {
 		this.words = words;
 		Collections.shuffle(this.words);
 		this.random = ThreadLocalRandom.current();
-		this.edunomator = edunomator;
-		this.speaker = edunomator.getSpeaker();
+		this.slowouczyciel = slowouczyciel;
+		this.speaker = slowouczyciel.getSpeaker();
 		nextQuestion();
 	}
 
@@ -60,7 +60,7 @@ public class ExamStage extends EdunomatorStage {
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		if (question.guess(screenX, screenY)) {
 			if (!nextQuestion()) {
-				edunomator.learnWords("fruits");
+				slowouczyciel.learnWords("fruits");
 			}
 		}
 		return true;
