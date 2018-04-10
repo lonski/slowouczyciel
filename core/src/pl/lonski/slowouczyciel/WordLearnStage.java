@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
-
 public class WordLearnStage extends SlowouczycielStage implements DirectionListener {
 
 	private final float screenWidth;
@@ -81,9 +80,7 @@ public class WordLearnStage extends SlowouczycielStage implements DirectionListe
 			currentWord.setPosition(screenWidth, 0);
 			currentWord.addAction(wrapAction(moveTo(0, 0, 0.2f)));
 			addActor(currentWord);
-			speaker.speak(currentWord.getWordName());
-			System.out.println(currentWordIdx);
-			System.out.println(currentWord.getWordName());
+			speaker.speak(currentWord.getSpokenName());
 		} else {
 			slowouczyciel.startExam(words);
 		}
@@ -105,7 +102,7 @@ public class WordLearnStage extends SlowouczycielStage implements DirectionListe
 			currentWord.setPosition(-screenWidth, 0);
 			currentWord.addAction(wrapAction(moveTo(0, 0, 0.2f)));
 			addActor(currentWord);
-			speaker.speak(currentWord.getWordName());
+			speaker.speak(currentWord.getSpokenName());
 		}
 	}
 

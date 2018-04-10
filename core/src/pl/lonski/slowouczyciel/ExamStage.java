@@ -39,7 +39,7 @@ public class ExamStage extends SlowouczycielStage {
 
 		if (words.size() >= 4) {
 			question = new Question();
-			String name = question.asked.getWordName();
+			String name = question.asked.getSpokenName();
 			String text = "Gdzie jest " + name;
 			if (name.endsWith("y")) {
 				text = "Gdzie są " + name;
@@ -60,7 +60,7 @@ public class ExamStage extends SlowouczycielStage {
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		if (question.guess(screenX, screenY)) {
 			if (!nextQuestion()) {
-				slowouczyciel.learnWords("fruits");
+				slowouczyciel.gameMenu();
 			}
 		}
 		return true;

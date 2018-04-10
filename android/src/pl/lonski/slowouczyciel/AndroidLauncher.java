@@ -12,15 +12,13 @@ import android.util.Log;
 public class AndroidLauncher extends AndroidApplication implements TextToSpeech.OnInitListener {
 
 	private TextToSpeech tts;
-	private AndroidSpeaker actionResolver;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		tts = new TextToSpeech(this, this);
-		actionResolver = new AndroidSpeaker(tts);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(new Slowouczyciel(actionResolver), config);
+		initialize(new Slowouczyciel(new AndroidSpeaker(tts)), config);
 	}
 
 	@Override

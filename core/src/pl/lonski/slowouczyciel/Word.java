@@ -11,27 +11,33 @@ public class Word extends Actor {
 
 	private final FileHandle textureFile;
 	private Texture texture;
-	private final Text label;
-	private final String name;
+	private Text label;
+	private final String displayName;
+	private final String spokenName;
 	private boolean drawLabel;
 
 	Word(FileHandle file, String name) {
 		this.textureFile = file;
-		this.name = name.substring(0, 1).toUpperCase() + name.substring(1).replaceAll("_", " ");
+		String[] arr = name.split("&");
+		this.displayName = arr[0].substring(0, 1).toUpperCase() + arr[0].substring(1).replaceAll("_", " ");
+		this.spokenName = (arr.length == 2 ? arr[1] : displayName).replaceAll("_", " ");
 		this.drawLabel = true;
-		this.label = new Text(this.name, Color.RED);
-
 		setPosition(Gdx.graphics.getWidth(), 0);
 	}
 
 	void load() {
 		if (texture == null) {
 			texture = new Texture(textureFile);
+			label = new Text(this.displayName, Color.RED);
 		}
 	}
 
-	String getWordName() {
-		return name;
+	String getDisplayName() {
+		return displayName;
+	}
+
+	String getSpokenName() {
+		return spokenName;
 	}
 
 	void setLabelVisible(boolean visible) {

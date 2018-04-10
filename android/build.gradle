@@ -18,7 +18,7 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "pl.lonski.edunomator"
+        applicationId "pl.lonski.slowouczyciel"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
@@ -79,7 +79,7 @@ task run(type: Exec) {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'pl.lonski.edunomator/pl.lonski.edunomator.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'pl.lonski.slowouczyciel/pl.lonski.slowouczyciel.AndroidLauncher'
 }
 
 // sets up the Android Eclipse project, using the old Ant based build.

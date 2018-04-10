@@ -14,7 +14,7 @@ public class Slowouczyciel extends ApplicationAdapter {
 	private final Speaker speaker;
 
 
-	public Slowouczyciel(Speaker resolver) {
+	Slowouczyciel(Speaker resolver) {
 		this.speaker = resolver;
 	}
 
@@ -35,13 +35,19 @@ public class Slowouczyciel extends ApplicationAdapter {
 	}
 
 	void startExam(List<pl.lonski.slowouczyciel.Word> words) {
-		stage = new pl.lonski.slowouczyciel.ExamStage(words, this);
+		stage = new ExamStage(words, this);
+		Gdx.input.setInputProcessor(stage.getInputAdapter());
+	}
+
+	void gameMenu() {
+		stage = new MenuStage(this);
 		Gdx.input.setInputProcessor(stage.getInputAdapter());
 	}
 
 	@Override
 	public void create() {
-		learnWords("fruits");
+//		learnWords("fruits");
+		gameMenu();
 	}
 
 	@Override
