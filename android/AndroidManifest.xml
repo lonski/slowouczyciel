@@ -3,6 +3,7 @@
 		  package="pl.lonski.slowouczyciel">
 
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="25"/>
+	<uses-permission android:name="android.permission.REORDER_TASKS"/>
 
 	<application
 			android:allowBackup="true"

@@ -5,6 +5,8 @@ import java.util.Locale;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -32,5 +34,17 @@ public class AndroidLauncher extends AndroidApplication implements TextToSpeech.
 		} else {
 			Log.e("TTS", "Initilization Failed!");
 		}
+	}
+
+	@Override
+	public void onBackPressed() {
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		ActivityManager activityManager = (ActivityManager) getApplicationContext()
+				.getSystemService(Context.ACTIVITY_SERVICE);
+		activityManager.moveTaskToFront(getTaskId(), 0);
 	}
 }

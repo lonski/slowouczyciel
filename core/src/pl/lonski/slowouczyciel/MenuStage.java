@@ -28,6 +28,7 @@ class MenuStage extends SlowouczycielStage {
 		xOffset = 20;
 		addLogo();
 		addButton("Owoce", "fruits/");
+		addButton("Warzywa", "vegetables/");
 		addButton("Zwierzęta", "animals/");
 		addButton("Języki programowania", "languages/");
 	}
