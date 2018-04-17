@@ -47,6 +47,11 @@ public class Slowouczyciel extends ApplicationAdapter {
 		Gdx.input.setInputProcessor(stage.getInputAdapter());
 	}
 
+	void chooseLanguage() {
+		stage = new ChooseLanguageStage(this);
+		Gdx.input.setInputProcessor(stage.getInputAdapter());
+	}
+
 	Config getConfig() {
 		return config;
 	}
@@ -58,8 +63,7 @@ public class Slowouczyciel extends ApplicationAdapter {
 
 	@Override
 	public void create() {
-		setConfig("config-en.json");
-		gameMenu();
+		chooseLanguage();
 	}
 
 	@Override
