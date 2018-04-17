@@ -1,4 +1,4 @@
-package pl.lonski.slowouczyciel;
+package pl.lonski.worducator;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
-abstract class ButtonsStage extends SlowouczycielStage {
+abstract class ButtonsStage extends WorducatorStage {
 
 	private static final float WIDTH = 320;
 	private static final float HEIGHT = 240;

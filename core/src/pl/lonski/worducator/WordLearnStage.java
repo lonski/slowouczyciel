@@ -1,4 +1,4 @@
-package pl.lonski.slowouczyciel;
+package pl.lonski.worducator;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
@@ -12,26 +12,26 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
-public class WordLearnStage extends SlowouczycielStage implements DirectionListener {
+public class WordLearnStage extends WorducatorStage implements DirectionListener {
 
 	private final float screenWidth;
 	private final Speaker speaker;
-	private final Slowouczyciel slowouczyciel;
+	private final Worducator worducator;
 	private final WordLoader loader;
 	private final String loadingText;
-	private List<pl.lonski.slowouczyciel.Word> words;
+	private List<Word> words;
 	private int currentWordIdx;
-	private pl.lonski.slowouczyciel.Word currentWord;
+	private Word currentWord;
 	private Text loadingLabel;
 
-	WordLearnStage(Config.Dataset dataset, Slowouczyciel slowouczyciel) {
-		this.speaker = slowouczyciel.getSpeaker();
-		this.slowouczyciel = slowouczyciel;
+	WordLearnStage(Config.Dataset dataset, Worducator worducator) {
+		this.speaker = worducator.getSpeaker();
+		this.worducator = worducator;
 		this.words = new ArrayList<>();
 		this.screenWidth = Gdx.graphics.getWidth();
 		this.currentWordIdx = -1;
 		this.loader = new WordLoader(dataset);
-		this.loadingText = slowouczyciel.getConfig().spokenSentences.loading;
+		this.loadingText = worducator.getConfig().spokenSentences.loading;
 
 		loadingLabel = new Text("", Color.GREEN);
 		loadingLabel.setPosition(100, 100);
@@ -84,11 +84,11 @@ public class WordLearnStage extends SlowouczycielStage implements DirectionListe
 			addActor(currentWord);
 			speaker.speak(currentWord.getWordName());
 		} else {
-			slowouczyciel.startExam(words);
+			worducator.startExam(words);
 		}
 	}
 
-	private pl.lonski.slowouczyciel.Word getWordAtCurrentIdx() {
+	private Word getWordAtCurrentIdx() {
 		loadWordAt(currentWordIdx);
 		return words.get(currentWordIdx);
 	}

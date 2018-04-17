@@ -1,4 +1,4 @@
-package pl.lonski.slowouczyciel;
+package pl.lonski.worducator;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.scaleBy;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
@@ -14,22 +14,22 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
-public class ExamStage extends SlowouczycielStage {
+public class ExamStage extends WorducatorStage {
 
 	private final List<Word> words;
 	private final Random random;
-	private final Slowouczyciel slowouczyciel;
+	private final Worducator worducator;
 	private final Speaker speaker;
 	private Question question;
 	private Config.SpokenSentences sentences;
 
-	ExamStage(List<Word> words, Slowouczyciel slowouczyciel) {
+	ExamStage(List<Word> words, Worducator worducator) {
 		this.words = words;
 		Collections.shuffle(this.words);
 		this.random = ThreadLocalRandom.current();
-		this.slowouczyciel = slowouczyciel;
-		this.speaker = slowouczyciel.getSpeaker();
-		this.sentences = slowouczyciel.getConfig().spokenSentences;
+		this.worducator = worducator;
+		this.speaker = worducator.getSpeaker();
+		this.sentences = worducator.getConfig().spokenSentences;
 		nextQuestion();
 	}
 
@@ -62,7 +62,7 @@ public class ExamStage extends SlowouczycielStage {
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		if (question.guess(screenX, screenY)) {
 			if (!nextQuestion()) {
-				slowouczyciel.gameMenu();
+				worducator.gameMenu();
 			}
 		}
 		return true;

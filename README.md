@@ -1,5 +1,3 @@
-# Słowouczyciel
+# Worducator 
 
-Aplikacja android to nauki słów.
-
-Więcej info: [tutaj](https://lonski.pl/post/14_slowouczyciel--nauka-slow)
+Android application for learning words

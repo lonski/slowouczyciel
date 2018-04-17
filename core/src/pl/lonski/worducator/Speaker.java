@@ -1,4 +1,4 @@
-package pl.lonski.slowouczyciel;
+package pl.lonski.worducator;
 
 public interface Speaker {
 	void speak(String text);

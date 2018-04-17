@@ -1,4 +1,4 @@
-package pl.lonski.slowouczyciel;
+package pl.lonski.worducator;
 
 import java.util.Locale;
 
@@ -15,7 +15,8 @@ public class AndroidLauncher extends AndroidApplication {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		Slowouczyciel slowouczyciel = new Slowouczyciel(new SpeakerProvider() {
+		Worducator
+				worducator = new Worducator(new pl.lonski.worducator.SpeakerProvider() {
 			@Override
 			public Speaker get(Locale locale) {
 				return new AndroidSpeaker(AndroidLauncher.this, locale);
@@ -23,7 +24,7 @@ public class AndroidLauncher extends AndroidApplication {
 		});
 
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(slowouczyciel, config);
+		initialize(worducator, config);
 	}
 
 	@Override

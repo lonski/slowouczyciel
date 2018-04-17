@@ -1,4 +1,4 @@
-package pl.lonski.slowouczyciel;
+package pl.lonski.worducator;
 
 import java.util.List;
 import java.util.Locale;
@@ -8,16 +8,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
-public class Slowouczyciel extends ApplicationAdapter {
+public class Worducator extends ApplicationAdapter {
 
 	private static BitmapFont font;
 
 	private final SpeakerProvider speakerProvider;
 	private Speaker speaker;
-	private SlowouczycielStage stage;
+	private WorducatorStage stage;
 	private Config config;
 
-	Slowouczyciel(SpeakerProvider speakerProvider) {
+	Worducator(SpeakerProvider speakerProvider) {
 		this.speakerProvider = speakerProvider;
 	}
 
@@ -37,8 +37,8 @@ public class Slowouczyciel extends ApplicationAdapter {
 		Gdx.input.setInputProcessor(stage.getInputAdapter());
 	}
 
-	void startExam(List<pl.lonski.slowouczyciel.Word> words) {
-		stage = new ExamStage(words, this);
+	void startExam(List<Word> words) {
+		stage = new pl.lonski.worducator.ExamStage(words, this);
 		Gdx.input.setInputProcessor(stage.getInputAdapter());
 	}
 

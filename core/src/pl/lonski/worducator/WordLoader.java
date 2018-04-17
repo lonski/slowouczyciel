@@ -1,4 +1,4 @@
-package pl.lonski.slowouczyciel;
+package pl.lonski.worducator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,15 +7,13 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 
-import pl.lonski.slowouczyciel.Config.Dataset.WordFile;
-
 public class WordLoader {
 
 	private final int total;
 	private boolean isLoaded;
 	private final String dataDirectory;
-	private List<Word> words;
-	private List<WordFile> files;
+	private List<pl.lonski.worducator.Word> words;
+	private List<Config.Dataset.WordFile> files;
 
 	WordLoader(Config.Dataset dataset) {
 		this.isLoaded = false;
@@ -34,16 +32,16 @@ public class WordLoader {
 		}
 	}
 
-	private void loadSingleFile(WordFile file) {
+	private void loadSingleFile(Config.Dataset.WordFile file) {
 		FileHandle fh = Gdx.files.internal(dataDirectory + "/" + file.filename);
-		words.add(new Word(fh, file.name, file.isPlural));
+		words.add(new pl.lonski.worducator.Word(fh, file.name, file.isPlural));
 	}
 
 	boolean isDone() {
 		return isLoaded;
 	}
 
-	List<Word> getWords() {
+	List<pl.lonski.worducator.Word> getWords() {
 		return words;
 	}
 
