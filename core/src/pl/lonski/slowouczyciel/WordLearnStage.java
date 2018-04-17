@@ -18,20 +18,22 @@ public class WordLearnStage extends SlowouczycielStage implements DirectionListe
 	private final Speaker speaker;
 	private final Slowouczyciel slowouczyciel;
 	private final WordLoader loader;
+	private final String loadingText;
 	private List<pl.lonski.slowouczyciel.Word> words;
 	private int currentWordIdx;
 	private pl.lonski.slowouczyciel.Word currentWord;
 	private Text loadingLabel;
 
-	WordLearnStage(String folder, Slowouczyciel slowouczyciel) {
+	WordLearnStage(Config.Dataset dataset, Slowouczyciel slowouczyciel) {
 		this.speaker = slowouczyciel.getSpeaker();
 		this.slowouczyciel = slowouczyciel;
 		this.words = new ArrayList<>();
 		this.screenWidth = Gdx.graphics.getWidth();
 		this.currentWordIdx = -1;
-		this.loader = new WordLoader(folder);
+		this.loader = new WordLoader(dataset);
+		this.loadingText = slowouczyciel.getConfig().spokenSentences.loading;
 
-		loadingLabel = new Text("Ładowanie", Color.GREEN);
+		loadingLabel = new Text("", Color.GREEN);
 		loadingLabel.setPosition(100, 100);
 		loadingLabel.setScale(0.7f);
 		addActor(loadingLabel);
@@ -41,7 +43,7 @@ public class WordLearnStage extends SlowouczycielStage implements DirectionListe
 	public void act(float delta) {
 		super.act(delta);
 		if (!loader.isDone()) {
-			loadingLabel.setText("Ładowanie (" + loader.getLoadedCount() + "/" + loader.getTotalCount() + ")");
+			loadingLabel.setText(String.format(loadingText, loader.getLoadedCount(), loader.getTotalCount()));
 			loader.loadNext();
 		} else if (words.isEmpty()) {
 			this.words = loader.getWords();
@@ -80,7 +82,7 @@ public class WordLearnStage extends SlowouczycielStage implements DirectionListe
 			currentWord.setPosition(screenWidth, 0);
 			currentWord.addAction(wrapAction(moveTo(0, 0, 0.2f)));
 			addActor(currentWord);
-			speaker.speak(currentWord.getSpokenName());
+			speaker.speak(currentWord.getWordName());
 		} else {
 			slowouczyciel.startExam(words);
 		}
@@ -102,7 +104,7 @@ public class WordLearnStage extends SlowouczycielStage implements DirectionListe
 			currentWord.setPosition(-screenWidth, 0);
 			currentWord.addAction(wrapAction(moveTo(0, 0, 0.2f)));
 			addActor(currentWord);
-			speaker.speak(currentWord.getSpokenName());
+			speaker.speak(currentWord.getWordName());
 		}
 	}
 

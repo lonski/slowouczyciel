@@ -1,6 +1,7 @@
 package pl.lonski.slowouczyciel;
 
 import java.util.List;
+import java.util.Locale;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -10,12 +11,14 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 public class Slowouczyciel extends ApplicationAdapter {
 
 	private static BitmapFont font;
+
+	private final SpeakerProvider speakerProvider;
+	private Speaker speaker;
 	private SlowouczycielStage stage;
-	private final Speaker speaker;
+	private Config config;
 
-
-	Slowouczyciel(Speaker resolver) {
-		this.speaker = resolver;
+	Slowouczyciel(SpeakerProvider speakerProvider) {
+		this.speakerProvider = speakerProvider;
 	}
 
 	public static BitmapFont getFont() {
@@ -29,8 +32,8 @@ public class Slowouczyciel extends ApplicationAdapter {
 		return speaker;
 	}
 
-	void learnWords(String folder) {
-		stage = new WordLearnStage(folder, this);
+	void learnWords(Config.Dataset dataset) {
+		stage = new WordLearnStage(dataset, this);
 		Gdx.input.setInputProcessor(stage.getInputAdapter());
 	}
 
@@ -44,9 +47,18 @@ public class Slowouczyciel extends ApplicationAdapter {
 		Gdx.input.setInputProcessor(stage.getInputAdapter());
 	}
 
+	Config getConfig() {
+		return config;
+	}
+
+	void setConfig(String filename) {
+		this.config = Config.load(Gdx.files.internal(filename));
+		this.speaker = speakerProvider.get(new Locale(config.language));
+	}
+
 	@Override
 	public void create() {
-//		learnWords("fruits");
+		setConfig("config-en.json");
 		gameMenu();
 	}
 

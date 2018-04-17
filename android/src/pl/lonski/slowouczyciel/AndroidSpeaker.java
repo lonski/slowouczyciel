@@ -1,14 +1,39 @@
 package pl.lonski.slowouczyciel;
 
+import java.util.Locale;
+
+import android.content.Context;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 
-public class AndroidSpeaker implements Speaker {
+public class AndroidSpeaker implements Speaker, TextToSpeech.OnInitListener {
 
-	private TextToSpeech tts;
+	private final TextToSpeech tts;
+	private Locale locale;
+	private boolean isInitialized;
 	private String lastSpoken;
 
-	AndroidSpeaker(TextToSpeech tts) {
-		this.tts = tts;
+	AndroidSpeaker(Context context, Locale locale) {
+		this.locale = locale;
+		this.tts = new TextToSpeech(context, this);
+	}
+
+	boolean isInitialized() {
+		return isInitialized;
+	}
+
+	@Override
+	public void onInit(int status) {
+		if (status == TextToSpeech.SUCCESS) {
+			int result = tts.setLanguage(locale);
+			isInitialized = result == 0;
+			if (!isInitialized) {
+				Log.e("TTS", "Failed to set language " + locale + " status = " + result);
+			}
+		} else {
+			Log.e("TTS", "Initilization Failed!");
+			isInitialized = false;
+		}
 	}
 
 	@Override

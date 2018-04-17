@@ -27,10 +27,9 @@ class MenuStage extends SlowouczycielStage {
 		yOffset = HEIGHT * 0.95f;
 		xOffset = 20;
 		addLogo();
-		addButton("Owoce", "fruits/");
-		addButton("Warzywa", "vegetables/");
-		addButton("Zwierzęta", "animals/");
-		addButton("Języki programowania", "languages/");
+		for (Config.Dataset dataset : slowouczyciel.getConfig().datasets) {
+			addButton(dataset);
+		}
 	}
 
 	private void addLogo() {
@@ -41,8 +40,8 @@ class MenuStage extends SlowouczycielStage {
 		yOffset -= logo.getHeight() * 1.4f;
 	}
 
-	private void addButton(String label, final String folder) {
-		TextButton button = new TextButton(label, skin);
+	private void addButton(final Config.Dataset dataset) {
+		TextButton button = new TextButton(dataset.name, skin);
 		button.setPosition(xOffset, yOffset - button.getHeight());
 		yOffset -= button.getHeight() * 1.2f;
 		button.addListener(new InputListener() {
@@ -53,7 +52,7 @@ class MenuStage extends SlowouczycielStage {
 
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				MenuStage.this.slowouczyciel.learnWords(folder);
+				MenuStage.this.slowouczyciel.learnWords(dataset);
 			}
 		});
 		addActor(button);

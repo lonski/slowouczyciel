@@ -1,0 +1,168 @@
+{
+    "datasets": [
+        {
+            "directory": "fruits/",
+            "name": "Owoce",
+            "wordFiles": [
+				{
+					"filename":"morela.jpg",
+					"name":"morele",
+					"isPlural": true
+				},
+				{
+					"filename":"kokos.jpg",
+					"name":"kokos"
+				},
+				{
+					"filename":"wisnia.jpg",
+					"name":"wiśnie",
+					"isPlural": true
+
+				},
+				{
+					"filename":"brzoskwinia.jpg",
+					"name":"brzoskwinia"
+				},
+				{
+					"filename":"banany.jpg",
+					"name":"banany",
+					"isPlural": true
+				},
+				{
+					"filename":"kiwi.jpg",
+					"name":"kiwi"
+				},
+				{
+					"filename":"winogron.jpg",
+					"name":"winogrona",
+					"isPlural": true
+				},
+				{
+					"filename":"daktyl.jpg",
+					"name":"daktyle",
+					"isPlural": true
+				},
+				{
+					"filename":"grejpfrut.jpg",
+					"name":"grejpfrut"
+				},
+				{
+					"filename":"jezyny.jpg",
+					"name":"jeżyny",
+					"isPlural": true
+				},
+				{
+					"filename":"pomelo.jpg",
+					"name":"pomelo"
+				},
+				{
+					"filename":"mango.jpg",
+					"name":"mango"
+				},
+				{
+					"filename":"dzika_roza.jpg",
+					"name":"dzika róża"
+				},
+				{
+					"filename":"cytryna.jpg",
+					"name":"cytryny",
+					"isPlural": true
+				},
+				{
+					"filename":"pigwa.jpg",
+					"name":"pigwa"
+				},
+				{
+					"filename":"mandarynka.jpg",
+					"name":"mandarynka"
+				},
+				{
+					"filename":"ananas.jpg",
+					"name":"ananas"
+				},
+				{
+					"filename":"miechunka.jpg",
+					"name":"miechunka"
+				},
+				{
+					"filename":"jagody.jpg",
+					"name":"jagody",
+					"isPlural": true
+				},
+				{
+					"filename":"gruszka.jpg",
+					"name":"gruszka"
+				},
+				{
+					"filename":"kaki.jpg",
+					"name":"kaki"
+				},
+				{
+					"filename":"sliwka.jpg",
+					"name":"śliwka"
+				},
+				{
+					"filename":"arbuz.jpg",
+					"name":"arbuz"
+				},
+				{
+					"filename":"limonka.jpg",
+					"name":"limonka"
+				},
+				{
+					"filename":"truskawka.jpg",
+					"name":"truskawka"
+				},
+				{
+					"filename":"porzeczka.jpg",
+					"name":"porzeczka"
+				},
+				{
+					"filename":"maliny.jpg",
+					"name":"maliny",
+					"isPlural": true
+				},
+				{
+					"filename":"granat.jpg",
+					"name":"granat"
+				},
+				{
+					"filename":"poziomka.jpg",
+					"name":"poziomka"
+				},
+				{
+					"filename":"jablko.jpg",
+					"name":"jabłko"
+				},
+				{
+					"filename":"pomarancza.jpg",
+					"name":"pomarańcza"
+				},
+				{
+					"filename":"liczi.jpg",
+					"name":"liczi"
+				},
+				{
+					"filename":"nektarynka.jpg",
+					"name":"nektarynka"
+				},
+				{
+					"filename":"agrest.jpg",
+					"name":"agrest"
+				},
+				{
+					"filename":"figa.jpg",
+					"name":"figa"
+				}
+            ]
+        }
+    ],
+    "language": "pl",
+    "spokenSentences": {
+        "examAskPlural": "Gdzie są %s?",
+        "examAskSingular": "Gdzie jest %s?",
+        "examGuessCorrect": "Dobrze!",
+        "examGuessIncorrect": "Niestety nie.",
+		"loading": "Ładowanie (%d/%d)"
+    }
+}

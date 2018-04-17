@@ -21,6 +21,7 @@ public class ExamStage extends SlowouczycielStage {
 	private final Slowouczyciel slowouczyciel;
 	private final Speaker speaker;
 	private Question question;
+	private Config.SpokenSentences sentences;
 
 	ExamStage(List<Word> words, Slowouczyciel slowouczyciel) {
 		this.words = words;
@@ -28,6 +29,7 @@ public class ExamStage extends SlowouczycielStage {
 		this.random = ThreadLocalRandom.current();
 		this.slowouczyciel = slowouczyciel;
 		this.speaker = slowouczyciel.getSpeaker();
+		this.sentences = slowouczyciel.getConfig().spokenSentences;
 		nextQuestion();
 	}
 
@@ -39,11 +41,11 @@ public class ExamStage extends SlowouczycielStage {
 
 		if (words.size() >= 4) {
 			question = new Question();
-			String name = question.asked.getSpokenName();
-			String text = "Gdzie jest " + name;
-			if (name.endsWith("y")) {
-				text = "Gdzie są " + name;
-			}
+			String name = question.asked.getWordName();
+			String text = String.format(
+					(question.asked.isPlural() ? sentences.examAskPlural : sentences.examAskSingular),
+					name
+			);
 			speaker.speakQueued(text);
 			return true;
 		}
@@ -103,10 +105,10 @@ public class ExamStage extends SlowouczycielStage {
 		boolean guess(float x, float y) {
 			if (x >= asked.getX() && x < (asked.getX() + width / 2) && y < height - asked.getY() &&
 					y > (height / 2 - asked.getY())) {
-				speaker.speak("Dobrze!");
+				speaker.speak(sentences.examGuessCorrect);
 				return true;
 			}
-			speaker.speak("Niestety nie.");
+			speaker.speak(sentences.examGuessIncorrect);
 			return false;
 		}
 

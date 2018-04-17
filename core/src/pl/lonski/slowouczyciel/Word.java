@@ -12,32 +12,31 @@ public class Word extends Actor {
 	private final FileHandle textureFile;
 	private Texture texture;
 	private Text label;
-	private final String displayName;
-	private final String spokenName;
+	private final String name;
 	private boolean drawLabel;
+	private boolean isPlural;
 
-	Word(FileHandle file, String name) {
+	Word(FileHandle file, String name, boolean isPlural) {
 		this.textureFile = file;
-		String[] arr = name.split("&");
-		this.displayName = arr[0].substring(0, 1).toUpperCase() + arr[0].substring(1).replaceAll("_", " ");
-		this.spokenName = (arr.length == 2 ? arr[1] : displayName).replaceAll("_", " ");
+		this.name = name.substring(0, 1).toUpperCase() + name.substring(1);
 		this.drawLabel = true;
+		this.isPlural = isPlural;
 		setPosition(Gdx.graphics.getWidth(), 0);
 	}
 
 	void load() {
 		if (texture == null) {
 			texture = new Texture(textureFile);
-			label = new Text(this.displayName, Color.RED);
+			label = new Text(name, Color.RED);
 		}
 	}
 
-	String getDisplayName() {
-		return displayName;
+	String getWordName() {
+		return name;
 	}
 
-	String getSpokenName() {
-		return spokenName;
+	boolean isPlural() {
+		return isPlural;
 	}
 
 	void setLabelVisible(boolean visible) {
