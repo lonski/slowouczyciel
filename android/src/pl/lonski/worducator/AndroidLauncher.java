@@ -16,7 +16,7 @@ public class AndroidLauncher extends AndroidApplication {
 		super.onCreate(savedInstanceState);
 
 		Worducator
-				worducator = new Worducator(new pl.lonski.worducator.SpeakerProvider() {
+				worducator = new Worducator(new SpeakerProvider() {
 			@Override
 			public Speaker get(Locale locale) {
 				return new AndroidSpeaker(AndroidLauncher.this, locale);

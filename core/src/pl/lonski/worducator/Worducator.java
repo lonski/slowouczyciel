@@ -38,7 +38,7 @@ public class Worducator extends ApplicationAdapter {
 	}
 
 	void startExam(List<Word> words) {
-		stage = new pl.lonski.worducator.ExamStage(words, this);
+		stage = new ExamStage(words, this);
 		Gdx.input.setInputProcessor(stage.getInputAdapter());
 	}
 

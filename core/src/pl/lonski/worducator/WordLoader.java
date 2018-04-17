@@ -12,7 +12,7 @@ public class WordLoader {
 	private final int total;
 	private boolean isLoaded;
 	private final String dataDirectory;
-	private List<pl.lonski.worducator.Word> words;
+	private List<Word> words;
 	private List<Config.Dataset.WordFile> files;
 
 	WordLoader(Config.Dataset dataset) {
@@ -34,14 +34,14 @@ public class WordLoader {
 
 	private void loadSingleFile(Config.Dataset.WordFile file) {
 		FileHandle fh = Gdx.files.internal(dataDirectory + "/" + file.filename);
-		words.add(new pl.lonski.worducator.Word(fh, file.name, file.isPlural));
+		words.add(new Word(fh, file.name, file.isPlural));
 	}
 
 	boolean isDone() {
 		return isLoaded;
 	}
 
-	List<pl.lonski.worducator.Word> getWords() {
+	List<Word> getWords() {
 		return words;
 	}
 

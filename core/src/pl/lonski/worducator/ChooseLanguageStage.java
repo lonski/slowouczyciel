@@ -1,6 +1,6 @@
 package pl.lonski.worducator;
 
-class ChooseLanguageStage extends pl.lonski.worducator.ButtonsStage {
+class ChooseLanguageStage extends ButtonsStage {
 
 	private final Worducator worducator;
 

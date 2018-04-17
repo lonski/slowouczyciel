@@ -1,6 +1,6 @@
 package pl.lonski.worducator;
 
-class MenuStage extends pl.lonski.worducator.ButtonsStage {
+class MenuStage extends ButtonsStage {
 
 	private final Worducator worducator;
 
